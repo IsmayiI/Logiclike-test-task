@@ -1,10 +1,11 @@
+import { Sidebar } from "./components/Sidebar"
 
 function App() {
 
    return (
-      <>
-         <p>Логика и мышление</p>
-      </>
+      <div>
+         <Sidebar />
+      </div>
    )
 }
 

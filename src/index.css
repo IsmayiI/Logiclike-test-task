@@ -10,6 +10,11 @@
 :root {
    --color-dark: #39414B;
    --color-white: #fff;
+   --color-frame-active: #5FBF77;
+   --color-border: #CFCFE4;
+
+   --radii: 18px;
+   --frame-radii: 12px;
 }
 
 body {
@@ -18,4 +23,5 @@ body {
    font-weight: 800;
    color: var(--color-dark);
    padding: 2.4rem;
+   background-color: var(--color-white);
 }
