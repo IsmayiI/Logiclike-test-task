@@ -1,36 +1,30 @@
+import { useState } from 'react'
 import styles from './Sidebar.module.scss'
 
-interface SidebarProps { }
-
-interface Tag {
-   title: string,
-   isActive: boolean,
-   id: string
+interface SidebarProps {
+   tags: String[]
 }
 
-const tags: Tag[] = [
-   {
-      title: 'Все темы',
-      isActive: true,
-      id: crypto.randomUUID()
-   },
-   {
-      title: 'Логика и мышление',
-      isActive: false,
-      id: crypto.randomUUID()
-   }
-]
+export const Sidebar = ({ tags }: SidebarProps) => {
+   const [activeTag, setActivTag] = useState<Number>(0)
 
-export const Sidebar = ({ }: SidebarProps) => {
-
+   // const onActiveTag = (i: number) => {
+   //    setActivTag(i)
+   // }
 
    return (
       <nav className={styles.sidebar}>
          <ul>
-            {tags.map(({ title, id, isActive }) => {
-               const activeItemStyle = isActive ? `${styles.active}` : ''
+            {tags.map((tag, i) => {
+               const tagStyle = i === activeTag ? `${styles.active}` : ''
+
                return (
-                  <li key={id} className={activeItemStyle}>{title}</li>
+                  <li
+                     onClick={() => setActivTag(i)}
+                     className={tagStyle}
+                     key={`${tag}`}>
+                     {tag}
+                  </li>
                )
             })}
          </ul>
@@ -38,3 +32,4 @@ export const Sidebar = ({ }: SidebarProps) => {
    )
 }
 
+// const activeItemStyle = isActive ? `${styles.active}` : ''
