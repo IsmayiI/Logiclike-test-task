@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react"
 import { Sidebar } from "./components/Sidebar"
+import { Card } from "./components/Card"
 
 function App() {
 
@@ -47,10 +48,19 @@ function App() {
 
 
    return (
-      <div>
+      <>
          <Sidebar tags={tags}
             onFilter={filterByTag} />
-      </div>
+         <main>
+            <section>
+               {filteredCourses.map((course: Course) => {
+                  return (
+                     <Card key={course.id} {...course} />
+                  )
+               })}
+            </section>
+         </main>
+      </>
    )
 }
 

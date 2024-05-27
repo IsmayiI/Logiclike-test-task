@@ -15,12 +15,13 @@ export const Sidebar = ({ tags, onFilter }: SidebarProps) => {
    }
 
 
+
+
    return (
       <nav className={styles.sidebar}>
          <ul>
             {tags.map((tag, i) => {
                const tagStyle = i === activeTag ? `${styles.active}` : ''
-
                return (
                   <li
                      onClick={() => clickHandler(tag, i)}
