@@ -3,14 +3,17 @@ import styles from './Sidebar.module.scss'
 
 interface SidebarProps {
    tags: String[]
+   onFilter: (tag: String) => Course[]
 }
 
-export const Sidebar = ({ tags }: SidebarProps) => {
+export const Sidebar = ({ tags, onFilter }: SidebarProps) => {
    const [activeTag, setActivTag] = useState<Number>(0)
 
-   // const onActiveTag = (i: number) => {
-   //    setActivTag(i)
-   // }
+   const clickHandler = (tag: String, i: number) => {
+      onFilter(tag)
+      setActivTag(i)
+   }
+
 
    return (
       <nav className={styles.sidebar}>
@@ -20,7 +23,7 @@ export const Sidebar = ({ tags }: SidebarProps) => {
 
                return (
                   <li
-                     onClick={() => setActivTag(i)}
+                     onClick={() => clickHandler(tag, i)}
                      className={tagStyle}
                      key={`${tag}`}>
                      {tag}
