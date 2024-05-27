@@ -3,7 +3,7 @@ import { Sidebar } from "./components/Sidebar"
 
 function App() {
 
-   const [tags, setTags] = useState<String[]>([])
+   const [tags, setTags] = useState<string[]>([])
    const [courses, setCourses] = useState<Course[]>([])
    const [filteredCourses, setFilteredCourses] = useState<Course[]>([])
 
@@ -18,7 +18,7 @@ function App() {
       return courses
    }
 
-   const getAllTags = (courses: Course[]): String[] => {
+   const getAllTags = (courses: Course[]): string[] => {
       let allTags: string[] = []
 
       courses.forEach((course: Course) => {
@@ -31,7 +31,7 @@ function App() {
       return uniqueTags
    }
 
-   const filterByTag = (tag: String): Course[] => {
+   const filterByTag = (tag: string): Course[] => {
       const filteredCourses: Course[] = courses.filter((course: Course) => course.tags.includes(tag))
 
       setFilteredCourses(filteredCourses)

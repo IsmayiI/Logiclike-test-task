@@ -2,14 +2,14 @@ import { useState } from 'react'
 import styles from './Sidebar.module.scss'
 
 interface SidebarProps {
-   tags: String[]
-   onFilter: (tag: String) => Course[]
+   tags: string[]
+   onFilter: (tag: string) => Course[]
 }
 
 export const Sidebar = ({ tags, onFilter }: SidebarProps) => {
-   const [activeTag, setActivTag] = useState<Number>(0)
+   const [activeTag, setActivTag] = useState<number>(0)
 
-   const clickHandler = (tag: String, i: number) => {
+   const clickHandler = (tag: string, i: number) => {
       onFilter(tag)
       setActivTag(i)
    }
@@ -25,7 +25,7 @@ export const Sidebar = ({ tags, onFilter }: SidebarProps) => {
                   <li
                      onClick={() => clickHandler(tag, i)}
                      className={tagStyle}
-                     key={`${tag}`}>
+                     key={tag}>
                      {tag}
                   </li>
                )
