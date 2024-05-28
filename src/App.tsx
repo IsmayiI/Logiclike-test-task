@@ -2,6 +2,8 @@ import { useEffect, useState } from "react"
 import { Sidebar } from "./components/Sidebar"
 import { Card } from "./components/Card"
 
+const ALL_TAGS = 'Все темы'
+
 function App() {
 
    const [tags, setTags] = useState<string[]>([])
@@ -20,7 +22,7 @@ function App() {
    }
 
    const getAllTags = (courses: Course[]): string[] => {
-      let allTags: string[] = []
+      let allTags: string[] = [ALL_TAGS]
 
       courses.forEach((course: Course) => {
          allTags = [...allTags, ...course.tags]
@@ -33,6 +35,11 @@ function App() {
    }
 
    const filterByTag = (tag: string): Course[] => {
+      if (tag === ALL_TAGS) {
+         setFilteredCourses(courses)
+         return courses
+      }
+
       const filteredCourses: Course[] = courses.filter((course: Course) => course.tags.includes(tag))
 
       setFilteredCourses(filteredCourses)
@@ -42,9 +49,6 @@ function App() {
    useEffect(() => {
       getCourses()
    }, [])
-
-
-   console.log(filteredCourses)
 
 
    return (
