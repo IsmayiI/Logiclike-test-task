@@ -2,7 +2,7 @@ import { useEffect, useState } from "react"
 import { Sidebar } from "./components/Sidebar"
 import { Card } from "./components/Card"
 
-const ALL_TAGS = 'Все темы'
+const ALL_TAGS = 'Все темы' // All topics
 
 function App() {
 
@@ -10,33 +10,37 @@ function App() {
    const [courses, setCourses] = useState<Course[]>([])
    const [filteredCourses, setFilteredCourses] = useState<Course[]>([])
 
+   // Fetch courses from the API
    const getCourses = async (): Promise<Course[]> => {
       const res = await fetch('https://logiclike.com/docs/courses.json')
       const courses: Course[] = await res.json()
 
-      getAllTags(courses)
+      getAllTags(courses) // Get all tags from courses
 
       setCourses(courses)
       setFilteredCourses(courses)
       return courses
    }
 
+   // Extract all unique tags from courses
    const getAllTags = (courses: Course[]): string[] => {
       let allTags: string[] = [ALL_TAGS]
 
       courses.forEach((course: Course) => {
-         allTags = [...allTags, ...course.tags]
+         allTags = [...allTags, ...course.tags] // Add tags from each course
       })
 
-      const uniqueTags = [...new Set(allTags)]
+      const uniqueTags = [...new Set(allTags)] // Remove duplicate tags
 
       setTags(uniqueTags)
       return uniqueTags
    }
 
+   // Filter courses by selected tag
    const filterByTag = (tag: string): Course[] => {
+
       if (tag === ALL_TAGS) {
-         setFilteredCourses(courses)
+         setFilteredCourses(courses) // If 'All topics' is selected, show all courses
          return courses
       }
 
@@ -47,7 +51,7 @@ function App() {
    }
 
    useEffect(() => {
-      getCourses()
+      getCourses() // Fetch courses when the component mounts
    }, [])
 
    return (

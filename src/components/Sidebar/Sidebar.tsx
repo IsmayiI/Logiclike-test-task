@@ -7,12 +7,13 @@ interface SidebarProps {
 }
 
 export const Sidebar = ({ tags, onFilter }: SidebarProps) => {
-   const [activeTag, setActivTag] = useState<number>(0)
+   const [activeTag, setActivTag] = useState<number>(0) // State for storing the active tag index
 
+   // Handle click event on a tag
    const clickHandler = (tag: string, i: number) => {
-      if (i === activeTag) return
-      onFilter(tag)
-      setActivTag(i)
+      if (i === activeTag) return // If the clicked tag is already active, do nothing
+      onFilter(tag) // Filter courses by the clicked tag
+      setActivTag(i) // Set the clicked tag as active
    }
 
    return (
@@ -33,5 +34,3 @@ export const Sidebar = ({ tags, onFilter }: SidebarProps) => {
       </nav>
    )
 }
-
-// const activeItemStyle = isActive ? `${styles.active}` : ''
