@@ -48,11 +48,11 @@ function App() {
 
 
    return (
-      <>
+      <div className="container">
          <Sidebar tags={tags}
             onFilter={filterByTag} />
          <main>
-            <section>
+            <section className="section">
                {filteredCourses.map((course: Course) => {
                   return (
                      <Card key={course.id} {...course} />
@@ -60,7 +60,7 @@ function App() {
                })}
             </section>
          </main>
-      </>
+      </div>
    )
 }
 

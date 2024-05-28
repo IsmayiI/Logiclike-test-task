@@ -25,3 +25,37 @@ body {
    padding: 2.4rem;
    background-color: var(--color-white);
 }
+
+.container {
+   display: flex;
+   gap: 24px;
+}
+
+main {
+   flex: 1 1 auto;
+}
+
+.section {
+   display: grid;
+   grid-template-columns: repeat(3, 1fr);
+   grid-template-rows: auto;
+   gap: 18px;
+}
+
+@media (max-width: 902px) {
+   .section {
+      grid-template-columns: repeat(2, 1fr);
+   }
+}
+
+@media (max-width: 707px) {
+   .section {
+      grid-template-columns: repeat(1, 1fr);
+   }
+}
+
+@media (min-width: 1551px) {
+   main {
+      flex: 0 0 1215px;
+   }
+}
