@@ -50,18 +50,16 @@ function App() {
       getCourses()
    }, [])
 
-
    return (
       <div className="container">
          <Sidebar tags={tags}
             onFilter={filterByTag} />
          <main>
             <section className="section">
-               {filteredCourses.map((course: Course) => {
-                  return (
-                     <Card key={course.id} {...course} />
-                  )
-               })}
+               {filteredCourses.map((course: Course) => (
+                  <Card key={course.id} {...course} />
+               )
+               )}
             </section>
          </main>
       </div>

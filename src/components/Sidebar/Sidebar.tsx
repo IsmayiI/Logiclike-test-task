@@ -10,12 +10,10 @@ export const Sidebar = ({ tags, onFilter }: SidebarProps) => {
    const [activeTag, setActivTag] = useState<number>(0)
 
    const clickHandler = (tag: string, i: number) => {
+      if (i === activeTag) return
       onFilter(tag)
       setActivTag(i)
    }
-
-
-
 
    return (
       <nav className={styles.sidebar}>
