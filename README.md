@@ -1,30 +1,34 @@
-# React + TypeScript + Vite
+# LogicLike
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+ LogicLike is a React application built with TypeScript and Vite. It fetches a list of educational courses from the LogicLike platform and allows users to filter courses by selected topics (tags).
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- Fetch and display a list of educational courses from the LogicLike platform.
+- Filter courses by selected topics (tags).
+- Responsive design adapted for various screen sizes.
+- Pixel-perfect layout based on the provided Figma design.
+- Optimized code to minimize unnecessary re-renders.
 
-## Expanding the ESLint configuration
+## Technologies Used
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+- React
+- TypeScript
+- Vite
+- SCSS
+- Generate React CLI
+- LogicLike API
 
-- Configure the top-level `parserOptions` property like this:
+## Project Link
+https://logiclike-test-task-pearl.vercel.app/
 
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
-```
+## Project Requirements
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+- React, TypeScript, SCSS
+- Pixel-perfect layout based on Figma design: Figma Design
+- Use LogicLike API endpoint: GET https://logiclike.com/docs/courses.json
+- Display courses in a 3-column layout.
+- Filter courses by topics (tags).
+- Code must be optimized to avoid unnecessary re-renders.
+- Support for the latest version of Chrome.
+- No state management libraries (e.g., Redux, Zustand, MobX).
