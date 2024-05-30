@@ -9,17 +9,30 @@ function App() {
    const [tags, setTags] = useState<string[]>([])
    const [courses, setCourses] = useState<Course[]>([])
    const [filteredCourses, setFilteredCourses] = useState<Course[]>([])
+   const [error, setError] = useState<boolean>(false)
 
    // Fetch courses from the API
    const getCourses = async (): Promise<Course[]> => {
-      const res = await fetch('https://logiclike.com/docs/courses.json')
-      const courses: Course[] = await res.json()
+      try {
+         const res = await fetch('https://logiclike.com/docs/courses.json')
 
-      getAllTags(courses) // Get all tags from courses
+         if (!res.ok) throw new Error('Error fetching courses') // Throw an error if the response is not successful
 
-      setCourses(courses)
-      setFilteredCourses(courses)
-      return courses
+         const courses: Course[] = await res.json()
+
+
+         getAllTags(courses) // Get all tags from courses
+
+         setError(false)
+         setCourses(courses)
+         setFilteredCourses(courses)
+         return courses
+      } catch (error) {
+         setError(true)
+         console.log(error)
+      }
+
+      return [] // Return an empty array in case of an error
    }
 
    // Extract all unique tags from courses
@@ -53,6 +66,9 @@ function App() {
    useEffect(() => {
       getCourses() // Fetch courses when the component mounts
    }, [])
+
+   // Display an error message if there is an error
+   if (error) return <h1>Извините, что то пошло не так..</h1>
 
    return (
       <div className="container">
